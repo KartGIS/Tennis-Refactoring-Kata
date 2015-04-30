@@ -1,5 +1,5 @@
 
-public class TennisGame2 implements TennisGame
+public class TennisGame2 extends AbstractTennisGame
 {
     public int P1point = 0;
     public int P2point = 0;
@@ -17,30 +17,18 @@ public class TennisGame2 implements TennisGame
     public String getScore(){
         String score = "";
         if (P1point == P2point && P1point < 4)
-        {
-            if (P1point==0)
-                score = "Love";
-            if (P1point==1)
-                score = "Fifteen";
-            if (P1point==2)
-                score = "Thirty";
-            score += "-All";
-        }
+            score = getScoreString(P1point) + "-All";
         if (P1point==P2point && P1point>=3)
             score = "Deuce";
         
-        if (P1point > 0 && P2point==0)
-        {
-            if (P1point==1)
-                P1res = "Fifteen";
-            if (P1point==2)
-                P1res = "Thirty";
-            if (P1point==3)
-                P1res = "Forty";
-            
+        if (P1point > 0 && P2point==0) {
+            P1res = getScoreString(P1point);
+
             P2res = "Love";
+
             score = P1res + "-" + P2res;
         }
+
         if (P2point > 0 && P1point==0)
         {
             if (P2point==1)
@@ -99,7 +87,11 @@ public class TennisGame2 implements TennisGame
         }
         return score;
     }
-    
+
+    private String getScoreString(int score) {
+        return SCORES[score];
+    }
+
     public void SetP1Score(int number){
         
         for (int i = 0; i < number; i++)
