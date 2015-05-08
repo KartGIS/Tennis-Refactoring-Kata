@@ -1,5 +1,4 @@
 public abstract class AbstractTennisGame implements TennisGame {
-    public static final int FIFTEEN_VALUE = 1;
     public static final int FOURTY_VALUE = 3;
 
     protected int P2point;
@@ -23,7 +22,7 @@ public abstract class AbstractTennisGame implements TennisGame {
     }
 
     protected boolean differByOne() {
-        return Math.abs(P1point - P2point) == FIFTEEN_VALUE;
+        return Math.abs(P1point - P2point) == 1;
     }
 
     protected boolean allHaveLessOrEqualThanForty() {
@@ -38,9 +37,18 @@ public abstract class AbstractTennisGame implements TennisGame {
         return P1point == P2point;
     }
 
-    public abstract void wonPoint(String playerName);
+    public void wonPoint(String player) {
+        if (player1Name.equals(player))
+            P1point++;
+        else
+            P2point++;
+    }
 
     public abstract String getScore();
 
     protected final String[] SCORES = new String[]{"Love", "Fifteen", "Thirty", "Forty"}; // 0,1,2,3
+
+    protected boolean allHaveFourty() {
+        return (P1point == FOURTY_VALUE && P2point == FOURTY_VALUE);
+    }
 }

@@ -5,6 +5,7 @@ public class TennisGame2 extends AbstractTennisGame {
         super(player1Name, player2Name);
     }
 
+    @Override
     public String getScore() {
         if (deuce()) {
             return "Deuce";
@@ -22,18 +23,4 @@ public class TennisGame2 extends AbstractTennisGame {
         return "Win for " + leadingPlayerName();
     }
 
-    public void P1Score() {
-        P1point++;
-    }
-
-    public void P2Score() {
-        P2point++;
-    }
-
-    public void wonPoint(String player) {
-        if (player1Name.equals(player))
-            P1Score();
-        else
-            P2Score();
-    }
 }

@@ -5,6 +5,7 @@ public class TennisGame3 extends AbstractTennisGame {
         super(player1Name, player2Name);
     }
 
+    @Override
     public String getScore() {
         if (allHaveLessOrEqualThanForty() && !allHaveFourty()) {
             return (tie())
@@ -21,18 +22,6 @@ public class TennisGame3 extends AbstractTennisGame {
 
     private String leadingType() {
         return (differByOne() ? "Advantage ":  "Win for ");
-    }
-
-    private boolean allHaveFourty() {
-        return (P1point == FOURTY_VALUE && P2point == FOURTY_VALUE);
-    }
-
-    public void wonPoint(String playerName) {
-        if (playerName == "player1")
-            this.P1point += 1;
-        else
-            this.P2point += 1;
-        
     }
 
 }
